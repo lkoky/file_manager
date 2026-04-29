@@ -108,8 +108,8 @@ const App: React.FC = () => {
     // 构建用于解析的路径：确保包含根目录信息
     let pathToParse: string;
     if (!fullPath) {
-      // 空路径使用默认根目录
-      pathToParse = getDefaultRoot(roots);
+      // 空路径使用当前根目录（点击面包屑根目录时）
+      pathToParse = currentRoot;
     } else {
       const rootAliases = roots.map(r => r.alias);
       const isRootPath = rootAliases.some(alias => fullPath === alias || fullPath.startsWith(alias + '/'));
