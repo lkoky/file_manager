@@ -48,28 +48,28 @@ requirements.txt 内容：
 
 ```bash
 # 启动服务
-./start.sh start
+./service.sh start
 
 # 停止服务
-./start.sh stop
+./service.sh stop
 
 # 重启服务
-./start.sh restart
+./service.sh restart
 
 # 查看服务状态
-./start.sh status
+./service.sh status
 
 # 查看运行日志
-./start.sh logs
+./service.sh logs
 
 # 实时跟踪日志
-./start.sh logs -f
+./service.sh logs -f
 
 # 查看错误日志
-./start.sh errors
+./service.sh errors
 
 # 查看帮助
-./start.sh help
+./service.sh help
 ```
 
 脚本特性：
@@ -300,22 +300,22 @@ export PYTHONIOENCODING=utf-8
 
 ## 服务管理
 
-### 使用 start.sh 脚本
+### 使用 service.sh 脚本
 
-项目提供完整的服务管理脚本 `start.sh`，支持启动、停止、重启和监控。
+项目提供完整的服务管理脚本 `service.sh`，支持启动、停止、重启和监控。
 
 ```bash
 # 查看所有可用命令
-./start.sh help
+./service.sh help
 
 # 常用操作
-./start.sh start      # 启动
-./start.sh stop       # 停止
-./start.sh restart    # 重启
-./start.sh status     # 状态
-./start.sh logs       # 查看日志
-./start.sh logs -f    # 实时跟踪日志
-./start.sh errors     # 错误日志
+./service.sh start      # 启动
+./service.sh stop       # 停止
+./service.sh restart    # 重启
+./service.sh status     # 状态
+./service.sh logs       # 查看日志
+./service.sh logs -f    # 实时跟踪日志
+./service.sh errors     # 错误日志
 ```
 
 脚本功能：
@@ -347,9 +347,9 @@ After=network.target
 [Service]
 Type=simple
 User=www-data
-WorkingDirectory=/path/to/file_bro/backend
-Environment="PYTHONPATH=/path/to/file_bro/backend"
-ExecStart=/path/to/file_bro/backend/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+WorkingDirectory=/path/to/file_manager/backend
+Environment="PYTHONPATH=/path/to/file_manager/backend"
+ExecStart=/path/to/file_manager/backend/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
 Restart=always
 RestartSec=5
 

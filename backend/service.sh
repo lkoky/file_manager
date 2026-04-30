@@ -433,7 +433,7 @@ show_help() {
 ${GREEN}File Manager 服务管理脚本${NC}
 
 用法:
-  ./start.sh [命令] [选项]
+  ./service.sh [命令] [选项]
 
 命令:
   start             启动服务
@@ -447,15 +447,15 @@ ${GREEN}File Manager 服务管理脚本${NC}
   help              显示帮助信息
 
 示例:
-  ./start.sh start         # 启动服务
-  ./start.sh stop          # 停止服务
-  ./start.sh restart       # 重启服务
-  ./start.sh status        # 查看状态
-  ./start.sh logs          # 查看日志
-  ./start.sh logs -f       # 实时跟踪日志
-  ./start.sh errors        # 查看错误日志
-  ./start.sh clean         # 清理旧日志
-  ./start.sh info          # 显示服务信息
+  ./service.sh start         # 启动服务
+  ./service.sh stop          # 停止服务
+  ./service.sh restart       # 重启服务
+  ./service.sh status        # 查看状态
+  ./service.sh logs          # 查看日志
+  ./service.sh logs -f       # 实时跟踪日志
+  ./service.sh errors        # 查看错误日志
+  ./service.sh clean         # 清理旧日志
+  ./service.sh info          # 显示服务信息
 
 环境变量配置 (可选):
   通过 backend/.env 文件配置:

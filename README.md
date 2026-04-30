@@ -1,4 +1,4 @@
-# File Bro - 文件上传下载管理系统
+# File Manager - 文件上传下载管理系统
 
 一个基于 Python FastAPI + React 的前后端分离文件管理系统，支持文件上传、下载、预览和多级目录浏览。
 
@@ -55,7 +55,7 @@
 ### 克隆/进入项目
 
 ```bash
-cd file_bro
+cd file_manager
 ```
 
 ### 启动后端
@@ -64,12 +64,12 @@ cd file_bro
 cd backend
 
 # 方式1：使用服务管理脚本（推荐）
-./start.sh start        # 启动
-./start.sh stop         # 停止
-./start.sh restart      # 重启
-./start.sh status       # 查看状态
-./start.sh logs         # 查看日志
-./start.sh help         # 查看帮助
+./service.sh start        # 启动
+./service.sh stop         # 停止
+./service.sh restart      # 重启
+./service.sh status       # 查看状态
+./service.sh logs         # 查看日志
+./service.sh help         # 查看帮助
 
 # 方式2：直接启动（开发模式）
 uvicorn app.main:app --reload --port 8000
@@ -96,7 +96,7 @@ npm run dev
 ## 项目结构
 
 ```
-file_bro/
+file_manager/
 ├── backend/                  # Python FastAPI 后端
 │   ├── app/
 │   │   ├── main.py           # 应用入口
@@ -197,24 +197,24 @@ export PYTHONIOENCODING=utf-8
 
 ### 后端服务
 
-项目提供完整的服务管理脚本（`backend/start.sh`）：
+项目提供完整的服务管理脚本（`backend/service.sh`）：
 
 ```bash
 cd backend
 
 # 查看所有命令
-./start.sh help
+./service.sh help
 
 # 常用操作
-./start.sh start      # 启动服务
-./start.sh stop       # 停止服务（自动清理子进程）
-./start.sh restart    # 重启服务
-./start.sh status     # 查看运行状态
-./start.sh logs       # 查看运行日志
-./start.sh logs -f    # 实时跟踪日志
-./start.sh errors     # 查看错误日志
-./start.sh clean      # 清理旧日志备份
-./start.sh info       # 显示服务信息
+./service.sh start      # 启动服务
+./service.sh stop       # 停止服务（自动清理子进程）
+./service.sh restart    # 重启服务
+./service.sh status     # 查看运行状态
+./service.sh logs       # 查看运行日志
+./service.sh logs -f    # 实时跟踪日志
+./service.sh errors     # 查看错误日志
+./service.sh clean      # 清理旧日志备份
+./service.sh info       # 显示服务信息
 ```
 
 **脚本特性：**

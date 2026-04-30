@@ -25,6 +25,26 @@ npm install
 
 ### 开发模式
 
+#### 方式一：使用服务管理脚本（推荐）
+
+```bash
+cd frontend
+
+# 启动开发服务器
+./service.sh start
+
+# 查看状态
+./service.sh status
+
+# 查看日志
+./service.sh logs
+
+# 停止服务
+./service.sh stop
+```
+
+#### 方式二：直接启动
+
 ```bash
 npm run dev
 ```
@@ -182,3 +202,79 @@ const api = axios.create({
 ```
 
 并使用环境变量注入。
+
+## 服务管理
+
+### 使用 service.sh 脚本
+
+项目提供完整的服务管理脚本 `frontend/service.sh`，支持启动、停止、重启和监控。
+
+```bash
+cd frontend
+
+# 查看所有命令
+./service.sh help
+
+# 常用操作
+./service.sh start      # 启动开发服务器
+./service.sh stop       # 停止开发服务器
+./service.sh restart    # 重启开发服务器
+./service.sh status     # 查看运行状态
+./service.sh logs       # 查看运行日志
+./service.sh logs -f    # 实时跟踪日志
+./service.sh errors     # 查看错误日志
+./service.sh clean      # 清理旧日志备份
+./service.sh info       # 显示服务信息
+```
+
+**脚本特性：**
+- ✓ 自动检查 Node.js 和 npm 依赖
+- ✓ PID 文件管理（`logs/dev.pid`）
+- ✓ 自动日志轮转和备份
+- ✓ 健康检查验证服务就绪（访问 http://localhost:5173）
+- ✓ 停止时递归杀死所有子进程
+- ✓ 彩色终端输出（状态清晰）
+- ✓ 错误日志分离（`dev-error.log`）
+
+### 日志文件
+
+服务日志位于 `frontend/logs/` 目录：
+- `dev.log` - 主运行日志
+- `dev-error.log` - 错误日志
+- `dev.pid` - 进程ID文件
+
+### 环境变量
+
+可通过环境变量或 `.env` 文件配置：
+
+| 变量 | 说明 | 默认值 |
+|-----|------|--------|
+| `HOST` | 监听地址 | `0.0.0.0` |
+| `PORT` | 监听端口 | `5173` |
+| `VITE_API_URL` | 后端 API 地址 | `/api`（通过 Vite 代理） |
+
+### 故障排除
+
+#### 端口被占用
+
+如果 5173 端口被占用，可以通过修改 `vite.config.ts` 中的 `port` 配置或设置 `PORT` 环境变量来更换端口：
+
+```bash
+PORT=3000 ./service.sh start
+```
+
+#### npm install 未运行
+
+首次使用前需要安装依赖：
+
+```bash
+cd frontend
+npm install
+```
+
+#### 服务启动失败
+
+查看错误日志：
+```bash
+./service.sh errors
+```

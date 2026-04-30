@@ -6,7 +6,7 @@ import os
 import sys
 
 # 模拟加载 .env.test 配置
-os.environ['UPLOAD_DIRS'] = '{"default": "/workspace/file_bro/backend/uploads", "测试": "/tmp/test_uploads", "openclaw": "/home/liukai/.openclaw/workspace"}'
+os.environ['UPLOAD_DIRS'] = '{"default": "/workspace/file_manager/backend/uploads", "测试": "/tmp/test_uploads", "openclaw": "/home/liukai/.openclaw/workspace"}'
 
 # 导入配置（会重新加载）
 import importlib
