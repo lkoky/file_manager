@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 from typing import Optional
 from ..models import UploadResponse
 from ..utils.file_utils import parse_path, safe_join, ensure_upload_dir, validate_file_access
+from ..config import settings
 
 router = APIRouter(prefix="/api/upload", tags=["Upload"])
 

@@ -92,7 +92,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({
           </button>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="modal-body">
           <div className="form-group">
             <label>选择文件</label>
             <div

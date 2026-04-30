@@ -16,6 +16,12 @@ def get_root_aliases() -> Dict[str, str]:
 def resolve_root_path(root_alias: str) -> str:
     """根据别名获取根目录绝对路径（带缓存）"""
     roots = get_root_aliases()
+    # 兼容处理：将 'default' 映射到第一个可用根目录
+    if root_alias == 'default':
+        if not roots:
+            raise HTTPException(400, "No upload roots configured")
+        # 使用第一个根目录作为默认
+        root_alias = next(iter(roots.keys()))
     if root_alias not in roots:
         raise HTTPException(400, f"Unknown root alias: {root_alias}. Available: {list(roots.keys())}")
     return roots[root_alias]

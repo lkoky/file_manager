@@ -74,7 +74,7 @@ export const CreateDirModal: React.FC<CreateDirModalProps> = ({
           </button>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="modal-body">
           <div className="form-group">
             <label>目标位置</label>
             <div className="path-hint">{displayPath}</div>

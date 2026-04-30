@@ -570,7 +570,8 @@ body {
 }
 
 /* 新建目录模态框 */
-.create-dir-modal .modal-body {
+.create-dir-modal .modal-body,
+.upload-modal .modal-body {
   padding: 40px 48px;
 }
 
@@ -610,6 +611,123 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+/* 上传模态框 */
+.upload-modal .file-select-area {
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fafbfc;
+}
+
+.upload-modal .file-select-area:hover {
+  border-color: #667eea;
+  background: #f0f4ff;
+}
+
+.upload-modal .file-select-area.has-file {
+  border-style: solid;
+  border-color: #38ef7d;
+  background: #f0fff4;
+}
+
+.upload-modal .placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #888;
+  font-size: 14px;
+}
+
+.upload-modal .placeholder-icon {
+  font-size: 48px;
+  opacity: 0.6;
+}
+
+.upload-modal .selected-file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.upload-modal .file-icon {
+  font-size: 32px;
+}
+
+.upload-modal .file-name {
+  font-weight: 600;
+  color: #333;
+  word-break: break-all;
+}
+
+.upload-modal .file-size {
+  color: #888;
+  font-size: 13px;
+}
+
+.upload-modal .current-path-hint {
+  font-size: 13px;
+  color: #666;
+  background: #f5f7fa;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.upload-modal .progress-bar {
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 20px 0;
+  position: relative;
+}
+
+.upload-modal .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+  transition: width 0.2s ease;
+}
+
+.upload-modal .progress-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  font-weight: 600;
+  color: #333;
+}
+
+.upload-modal .message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-modal .message.success {
+  background: #f0fff4;
+  color: #2e7d32;
+  border: 1px solid #c6e6c6;
+}
+
+.upload-modal .message.error {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
 }
 
 /* 删除确认模态框 */
@@ -678,6 +796,64 @@ body {
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+/* 通用按钮样式 */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* 主按钮 */
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* 次要按钮 */
+.btn-secondary {
+  background: #f5f5f5;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #e8e8e8;
+  border-color: #ccc;
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 /* 响应式调整 */
@@ -1115,6 +1291,35 @@ body {
   margin-top: 36px;
   padding: 24px 28px 0;
   border-top: 1px solid #f0f0f0;
+}
+
+/* 表单元素样式 */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.form-group input[type="text"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
 }
 
 /* 响应式 */
